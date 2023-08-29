@@ -221,13 +221,54 @@ header .header__container {
 
 .readmore {
     grid-area: readmore;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
     background: var(--main-background);
-    padding: 40px 25px;
 }
 
+/*.readmore__container {
+    background: var(--main-background);
+    height: 100%;
+    position: relative;
+}
+
+.readmore__title {
+    text-transform: uppercase;
+    position: absolute;
+    font-size: 3rem;
+    line-height: 5rem;
+    width: 88%;
+    top: 5%;
+    left: 52%;
+    transform: translate(-52%, -5%);
+    letter-spacing: 0.049rem;
+}
+
+.readmore__content {
+    font-family: var(--sub-font);
+    position: absolute;
+    font-weight: 100;
+    font-size: 1.5rem;
+    line-height: 3rem;
+    width: 75%;
+    top: 66%;
+    left: 28%;
+    transform: translate(-28%, -66%);
+}
+
+.readmore__button {
+    text-transform: uppercase;
+    position: absolute;
+    border: 1px solid #fff;
+    font-size: 1.5rem;
+    letter-spacing: 0.047rem;
+    line-height: 4.5rem;
+    width: 58%;
+    top: 90%;
+    left: 18%;
+    transform: translate(-18%, -90%);
+    text-align: center;
+    font-weight: 500;
+    border-bottom: 0.2rem solid;
+}*/
 
 .readmore .title {
     font-family: var(--main-font);
