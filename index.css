@@ -1,5 +1,16 @@
-.point_font {
-    font-family: "Oswald", sans-serif;
+:root {
+    /* COLOR */
+    --main-background: #ff565c;
+    /* FONT */
+    --main-font: "Oswald", sans-serif;
+    --sub-font: "Lato", sans-serif;
+}
+
+body,
+button,
+input,
+textarea {
+    font-family: var(--main-font);
 }
 
 header {
@@ -9,7 +20,7 @@ header {
     border-bottom: 1px solid #ebebeb;
 }
 
-header .inner {
+header .header__container {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -17,62 +28,54 @@ header .inner {
     padding: 30px;
 }
 
-header .left {
+.main__left {
     display: flex;
     align-items: center;
 }
 
-.main_logo {
+.main__logo {
     margin-right: 55px;
     cursor: pointer;
 }
 
-.gnb_menu_area {
+.header__menu__list {
     display: flex;
 }
 
-.gnb_menu_area .gnb_1dep {
-    color: #d2d2d3;
-    text-decoration: none;
+.header__menu {
+    color: rgb(29 31 36 / 20%);
     margin-right: 60px;
-    transition: color 0.4s;
-}
-
-.gnb_menu_area .gnb_1dep:hover {
-    color: #222;
-}
-
-.gnb_menu_area .gnb_1dep:last-child {
-    margin-right: none;
+    font-weight: 500;
+    text-decoration: none;
 }
 
 .menu__button {
     cursor: pointer;
 }
 
-.content_container {
+.body__container {
     display: flex;
     justify-content: center;
     background: #f9fafc;
     padding-bottom: 120px;
 }
 
-.content_container .inner {
+.body__container .body__inner {
     max-width: 1440px;
     height: auto;
     padding: 30px;
     display: grid;
     grid-template-areas:
-        "a a a b"
-        "a a a c"
-        "d e e c"
-        "d f g h";
+        "main main main sub"
+        "main main main readmore"
+        "stories entertainment entertainment readmore"
+        "stories pg game tech";
     grid-gap: 30px;
     grid-auto-rows: 275px;
     grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
-.contents {
+.section {
     position: relative;
     display: grid;
     width: 100%;
@@ -80,7 +83,7 @@ header .left {
     color: #fff;
 }
 
-.contents .text_area {
+.section .content__container {
     position: relative;
     width: 100%;
     height: 100%;
@@ -90,13 +93,13 @@ header .left {
     justify-content: space-around;
 }
 
-.contents.slide .text_area {
+.section.slide .content__container {
     justify-content: center;
     align-items: center;
 }
 
-.text_area .title_label {
-    background: #ff565c;
+.content__container .label {
+    background: var(--main-background);
     height: 40px;
     display: flex;
     align-items: center;
@@ -107,44 +110,46 @@ header .left {
     margin-top: 30px;
 }
 
-.title_text {
+.title {
     font-size: 24px;
     margin-bottom: 20px;
     padding-left: 25px;
     line-height: 1.2;
+    font-family: var(--sub-font);
 }
 
-.contents.slide .title_text {
+.section.slide .title {
     font-size: 32px;
     text-align: center;
     line-height: 1.6;
 }
 
-.sub_text {
+.content {
     font-size: 18px;
     line-height: 1.4;
     text-align: center;
     opacity: 0.7;
-    font-family: "Lato", sans-serif;
+    font-family: var(--sub-font);
 }
 
-.contents.slide .text_area .state_area {
+.section.slide .content__container .footer__state {
     position: absolute;
     bottom: 10px;
 }
 
-.text_area .state_area {
+.content__container .footer__state {
     padding-left: 25px;
     margin-bottom: 25px;
+    font-family: var(--sub-font);
 }
 
-.state_area .state {
+.footer__state .state {
     padding-left: 35px;
     position: relative;
     font-size: 13px;
 }
 
-.state_area .state:before {
+.footer__state .state:before {
     content: "";
     display: block;
     position: absolute;
@@ -154,22 +159,22 @@ header .left {
     height: 16px;
 }
 
-.state_area .share:before {
+.footer__state .share:before {
     background: url("./images/share.png") no-repeat;
     background-size: contain;
 }
 
-.state_area .view:before {
+.footer__state .view:before {
     background: url("./images/view.png") no-repeat;
     background-size: contain;
 }
 
-.state_area .comments:before {
+.footer__state .comments:before {
     background: url("./images/comment.png") no-repeat;
     background-size: contain;
 }
 
-.contents .slide_btn_area {
+.section .slide__section {
     position: absolute;
     width: 100%;
     height: auto;
@@ -177,11 +182,11 @@ header .left {
     transform: translate(-50% 0);
 }
 
-.contents .slide_btn_area .arrow {
-    width: 50px;
-    height: 50px;
+.section .slide__section .arrow {
     background: url("./images/arrowLeft.png") #1d1f24 no-repeat;
     background-position: center;
+    width: 50px;
+    height: 50px;
     border: none;
 }
 
@@ -191,48 +196,57 @@ header .left {
     right: 0;
 }
 
-.content1 {
+.main__story {
+    grid-area: main;
+    background: url("./images/financeMain.png") #000 no-repeat;
+    background-size: cover;
+    background-position: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    grid-area: a;
-    background: url("./images/financeMain.png") #000 no-repeat;
-    background-size: cover;
-    background-position: center;
 }
 
-.content2 {
-    grid-area: b;
+.main__story .title {
+    font-family: var(--main-font);
+    text-transform: uppercase;
+}
+
+.sub {
+    grid-area: sub;
     background: url("./images/financeSub.png") #000 no-repeat;
     background-size: cover;
     background-position: center;
 }
 
-.content3 {
+.readmore {
+    grid-area: readmore;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    grid-area: c;
-    background: #ff565c;
+    background: var(--main-background);
     padding: 40px 25px;
 }
 
-.content3 .title_text {
+
+.readmore .title {
+    font-family: var(--main-font);
+    font-weight: 500;
+    text-transform: uppercase;
     font-size: 32px;
     line-height: 1.4;
     margin: 0;
     padding: 0;
 }
 
-.content3 .sub_text {
+.readmore .content {
     margin-right: 20px;
     text-align: left;
     opacity: 1;
     font-weight: 300;
 }
 
-.content3 .more_btn {
+.readmore .more_btn {
     width: 210px;
     height: 60px;
     display: flex;
@@ -246,82 +260,86 @@ header .left {
     font-size: 16px;
 }
 
-.content4 {
-    grid-area: d;
+.stories {
+    grid-area: stories;
     background: #fff;
     border: 1px solid #f2f3f6;
     font-size: 18px;
 }
 
-.content4 .stories_title {
-    padding: 40px 30px;
+.stories .stories__title {
+    padding: 47px 30px;
+    font-weight: 500;
     color: #1d1f24;
     font-size: 14px;
 }
 
-.content4 .story:first-child {
+.stories .story__list:first-child {
     border-top: 1px solid #f2f3f6;
 }
 
-.content4 .story {
+.stories .story__list {
     display: flex;
     align-items: start;
     padding: 25px;
     border-bottom: 1px solid #f2f3f6;
 }
 
-.content4 .story_bullet {
-    color: #ececec;
+.stories .stories__order {
+    color: rgb(29 31 36 / 16%);
     margin-right: 25px;
+    font-weight: 500;
+    margin-top: 7px;
 }
 
-.content4 .story_title {
+.stories .stories__content {
     padding-right: 10px;
     color: #1d1f24;
     text-decoration: none;
     letter-spacing: -0.2px;
     line-height: 1.2;
     font-size: 18px;
+    font-family: var(--sub-font);
 }
 
-.content5 {
-    grid-area: e;
+.entertainment {
+    grid-area: entertainment;
     background: url("./images/entertainment.png") #000 no-repeat;
     background-size: cover;
     background-position: center;
 }
 
-.content6 {
-    grid-area: f;
+.pg {
+    grid-area: pg;
     background: url("./images/financePg.png") #000 no-repeat;
     background-size: cover;
     background-position: center;
 }
 
-.content7 {
-    grid-area: g;
+.game {
+    grid-area: game;
     background: url("./images/gaming.png") #000 no-repeat;
     background-size: cover;
     background-position: center;
 }
 
-.content8 {
-    grid-area: h;
+.tech {
+    grid-area: tech;
     background: url("./images/technology.png") #000 no-repeat;
     background-size: cover;
     background-position: center;
 }
 
 @media (max-width: 768px) {
-    .content_container .inner {
+    .body__container .body__inner {
         grid-template-areas:
-            "a a"
-            "a a"
-            "d f "
-            "d g"
-            "c c"
-            "h b"
-            "e e";
+            "main main"
+            "main main"
+            "stories pg "
+            "stories game"
+            "readmore readmore"
+            "tech sub"
+            "entertainment entertainment";
         grid-gap: 15px;
         grid-auto-rows: 335px;
         grid-template-columns: 1fr 1fr;
@@ -329,18 +347,18 @@ header .left {
 }
 
 @media (max-width: 375px) {
-    .content_container .inner {
+    .body__container .body__inner {
         grid-template-areas:
-            "a"
-            "a"
-            "d"
-            "d"
-            "b"
-            "c"
-            "c"
-            "f"
-            "f"
-            "f";
+            "main"
+            "main"
+            "stories"
+            "stories"
+            "sub"
+            "readmore"
+            "readmore"
+            "pg"
+            "pg"
+            "pg";
         grid-gap: 20px;
         grid-auto-rows: 275px;
         grid-template-columns: 1fr;
