@@ -277,9 +277,13 @@ header .header__container {
 
 .stories {
     grid-area: stories;
-    background: #fff;
+    width: 316px;
+    height: 580px;
+    flex-shrink: 0;
     border: 1px solid #f2f3f6;
-    font-size: 18px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
 }
 
 .stories .stories__title {
@@ -495,6 +499,11 @@ footer {
         display: none;
     }
 
+    .stories {
+        width: 335px;
+        height: 602px;
+    }
+
     /* Footer */
     footer {
         width: 100%;
@@ -589,6 +598,16 @@ footer {
 
     .header__menu__list {
         display: none;
+    }
+
+    .stories {
+        width: 316px;
+        height: 580px;
+        flex-shrink: 0;
+        border: 1px solid #f2f3f6;
+        background: #fff;
+        display: flex;
+        flex-direction: column;
     }
 
     /* Footer */
